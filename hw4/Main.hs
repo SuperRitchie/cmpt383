@@ -29,8 +29,4 @@ data LTree a = Leaf a | LNode (LTree a) (LTree a) deriving (Show)
 instance Foldable LTree where
  foldMap :: Monoid m => (a -> m) -> LTree a -> m
  foldMap f (Leaf x) = f x
- foldMap f (LNode l r) = mappend (foldMap f l) (foldMap f r) 
-
-main = do
-  print(fmap (+1) (Err 1))
-  print(pure (+) <*> (Err 1) <*> (Jst 1))
+ foldMap f (LNode l r) = mappend (foldMap f l) (foldMap f r)
